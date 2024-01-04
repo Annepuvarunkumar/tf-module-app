@@ -8,4 +8,6 @@ variable "sg_ingress_cidr" {}
 variable "zone_id" {}
 variable "port" {}
 variable "instance_type" {}
-
+variable "desired_capacity" {}
+variable "max_size" {}
+variable "min_size" {}
