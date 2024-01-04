@@ -46,15 +46,15 @@ resource "aws_launch_template" "main" {
     }
 }
 
-resource "aws_autoscaling_group" "main" {
-  availability_zones = ["us-east-1a"]
-  desired_capacity   = 1
-  max_size           = 3
-  min_size           = 1
-
-  launch_template {
-    id      = aws_launch_template.main.id
-    version = "$Latest"
-  }
-}
+#resource "aws_autoscaling_group" "main" {
+#  availability_zones = ["us-east-1a"]
+#  desired_capacity   = 1
+#  max_size           = 3
+#  min_size           = 1
+#
+#  launch_template {
+#    id      = aws_launch_template.main.id
+#    version = "$Latest"
+#  }
+#}
 
