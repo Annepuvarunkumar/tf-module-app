@@ -28,6 +28,7 @@ resource "aws_security_group" "main" {
 }
 
 
+
 #resource "aws_launch_template" "main" {
 #  name_prefix            = "${local.name_prefix}-template"
 #  image_id               = data.aws_ami.ami.id
