@@ -39,12 +39,9 @@ resource "aws_launch_template" "main" {
     {
       component = var.component
     }))
-  #    iam_instance_profile {
-#        name = "test"
-#      }
-    tag_specifications {
-      resource_type = "instance"
 
+  tag_specifications {
+      resource_type = "instance"
       tags = merge(local.tags, { Name = "${local.name_prefix}-" })
     }
 }
