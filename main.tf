@@ -98,7 +98,7 @@ resource "aws_lb_listener_rule" "main" {
 }
 
 resource "aws_lb_target_group" "public" {
-  count    = var.component == "frontend" ? length(var.subnet_ids) : 0
+  count    = var.component == "frontend" ? 1 : 0
   name     = "${local.name_prefix}-public"
   port     = var.port
   protocol = "HTTP"
@@ -107,7 +107,7 @@ resource "aws_lb_target_group" "public" {
 }
 
 resource "aws_lb_target_group_attachment" "public" {
-  count             = var.component == "frontend" ? length(tolist(data.dns_a_record_set.private_alb.addrs)) : 0
+  count             = var.component == "frontend" ? length(var.subnet_ids) : 0
   target_group_arn  = aws_lb_target_group.public[0].arn
   target_id         = element(tolist(data.dns_a_record_set.private_alb.addrs), count.index )
   port              = 80
@@ -132,7 +132,6 @@ resource "aws_lb_listener_rule" "public" {
     }
   }
 }
-
 
 
 
