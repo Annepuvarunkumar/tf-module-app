@@ -92,7 +92,7 @@ resource "aws_lb_listener_rule" "main" {
 
   condition {
     host_header {
-      values = [var.component == "frontend" ? "${var.env}.varundevopsonline" : "${var.component}-${var.env}.varundevopsonline" ]
+      values = [var.component == "frontend" ? "${var.env}.varundevops.online" : "${var.component}-${var.env}.varundevops.online" ]
     }
   }
 }
@@ -115,6 +115,7 @@ resource "aws_lb_target_group_attachment" "public" {
 }
 
 
+
 resource "aws_lb_listener_rule" "public" {
   count        = var.component == "frontend" ? 1 : 0
   listener_arn = var.public_listener
@@ -127,10 +128,13 @@ resource "aws_lb_listener_rule" "public" {
 
   condition {
     host_header {
-      values = ["${var.env}.varundevopsonline"]
+      values = ["${var.env}.varundevops.online"]
     }
   }
 }
+
+
+
 
 
 
